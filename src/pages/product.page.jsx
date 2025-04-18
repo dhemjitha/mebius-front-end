@@ -39,7 +39,7 @@ function ProductPage() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-4 lg:px-16 py-8 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Product Image */}
         <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100">
