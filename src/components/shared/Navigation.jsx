@@ -24,25 +24,6 @@ export default function Navigation() {
             Mebius
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {[
-              { path: "/shop/shoes", label: "Shoes" },
-              { path: "/shop/tshirts", label: "T-Shirt" },
-              { path: "/shop/shorts", label: "Shorts" },
-              { path: "/shop/pants", label: "Pants" },
-              { path: "/shop/socks", label: "Socks" },
-            ].map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="font-medium hover:text-gray-600"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
           {/* Icons */}
           <div className="flex items-center space-x-6">
             {/* Search Icon */}
@@ -100,22 +81,12 @@ export default function Navigation() {
         {isMenuOpen && (
           <nav className="md:hidden pt-4 pb-6">
             <div className="flex flex-col space-y-4">
-              {[
-                { path: "/shop/shoes", label: "Shoes" },
-                { path: "/shop/tshirts", label: "T-Shirt" },
-                { path: "/shop/shorts", label: "Shorts" },
-                { path: "/shop/pants", label: "Pants" },
-                { path: "/shop/socks", label: "Socks" },
-              ].map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="font-medium hover:text-gray-600"
-                  onClick={closeMobileMenu}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <Button variant="ghost">
+                <Link to="/sign-in">Log In</Link>
+              </Button>
+              <Button>
+                <Link to="/sign-up">Sign Up</Link>
+              </Button>
             </div>
           </nav>
         )}
