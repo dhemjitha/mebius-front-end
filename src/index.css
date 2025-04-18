@@ -80,5 +80,11 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    width: 100%;
+		padding-right: 0 !important;
   }
+}
+
+html {
+	overflow-x: hidden;
 }
