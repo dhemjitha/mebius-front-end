@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/CartContext";
+import { Link } from "react-router";
 
 function ProductCard(props) {
   const { imageUrl, name, price, _id, description } = props;
@@ -17,6 +18,7 @@ function ProductCard(props) {
   };
 
   return (
+    <Link to={`/products/${_id}`}>
     <div className="group cursor-pointer">
       <div className="h-96 relative overflow-hidden rounded-2xl">
         <img
@@ -38,6 +40,7 @@ function ProductCard(props) {
         </Button>
       </div>
     </div>
+    </Link>
   );
 }
 
