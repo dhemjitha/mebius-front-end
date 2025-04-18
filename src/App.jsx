@@ -1,23 +1,14 @@
-import { Button } from "@/components/ui/button";
-import Greeting from "./Greeting";
-import { Switch } from "@/components/ui/switch"
+import Navigation from "./components/shared/Navigation";
+import Footer from "./components/shared/Footer";
 
 
 const App = () => {
-  const name = "Manupa";
-  const age = 24;
-
-  const handleClick = () => {
-    console.log("Button clicked!");
-  };
-
+  
   return (
-    <div>
-      <h1 className="text-red-500 text-2xl">Hello, world!</h1>
-      <Greeting name={"Dulran"} age={20} />
-      <Button onClick={handleClick}>Click Me</Button>
-      <Switch />
-    </div>
+    <>
+    <Navigation/>
+    <Footer/>
+    </>
   );
 };
 
