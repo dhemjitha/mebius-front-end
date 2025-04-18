@@ -65,12 +65,13 @@ function ShopFilters() {
         <h3 className="text-lg font-medium mb-3">Colors</h3>
         <div className="flex flex-wrap gap-2">
           {colors.map((color) => (
-            <button
+            <div
               key={color.slug}
               onClick={() => handleColorClick(color.slug)}
-              className={`h-8 w-8 rounded-full border-2 ${
-                selectedColor === color.slug ? "border-black" : "border-gray-200"
-              }`}
+              className={`cursor-pointer w-8 h-8 rounded-full border-2 ${selectedColor === color.slug
+                ? "ring-2 ring-black ring-offset-2"
+                : "ring-1 ring-gray-300"
+                }`}
               style={{ backgroundColor: color.hex }}
               title={color.name}
             />

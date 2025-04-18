@@ -14,7 +14,7 @@ function ShopPage() {
   // Filter products based on category and color
   const filteredProducts = useMemo(() => {
     let result = [...products];
-    
+
     // Filter by category if specified
     if (category) {
       const selectedCategory = categories.find(c => c.slug === category);
@@ -22,9 +22,9 @@ function ShopPage() {
         result = result.filter(product => product.categoryId === selectedCategory._id);
       }
     }
-    
+
     // Filter by color if specified (not implemented for demo)
-    
+
     return result;
   }, [category, color]);
 

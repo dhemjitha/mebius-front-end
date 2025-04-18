@@ -1,26 +1,22 @@
 import { useNavigate } from 'react-router';
 
 function ColorExplorer() {
-  
+
   const { colors } = {
     colors: [
-      { _id: "1", name: "RED PASTEL", hexcode: "#e86464", slug: "red-pastel" },
-      { _id: "2", name: "LIME GREEN", hexcode: "#c2e359", slug: "lime-green" },
-      { _id: "3", name: "NAVY BLUE", hexcode: "#2d3b6c", slug: "navy-blue" },
-      { _id: "4", name: "CLEAN WHITE", hexcode: "#f5f5f5", slug: "clean-white" },
-      { _id: "5", name: "BLUE SKY", hexcode: "#6bb5e8", slug: "blue-sky" },
-      { _id: "6", name: "PURPLE", hexcode: "#9c59e3", slug: "purple" },
-      { _id: "7", name: "PINK", hexcode: "#e85986", slug: "pink" },
-      { _id: "8", name: "YELLOW", hexcode: "#f7ca4d", slug: "yellow" },
-      { _id: "9", name: "DARK GREEN", hexcode: "#2a7d5f", slug: "dark-green" }
+      { _id: "1", slug: "resin", name: "Resin", hex: "#6C7C59", hexcode: "#6C7C59" },
+      { _id: "2", slug: "pimento", name: "Pimento", hex: "#BF3B2F", hexcode: "#BF3B2F" },
+      { _id: "3", slug: "bright_ceramic", name: "Bright Ceramic", hex: "#FFA500", hexcode: "#FFA500" },
+      { _id: "4", slug: "black", name: "Black", hex: "#000000", hexcode: "#000000" },
+      { _id: "5", slug: "white", name: "White", hex: "#FFFFFF", hexcode: "#FFFFFF" }
     ]
   };
   const navigate = useNavigate();
-  
+
   const handleColorClick = (colorSlug) => {
     navigate(`/shop?color=${colorSlug}`, { preventScrollReset: false });
   };
-  
+
   return (
     <section className="px-4 lg:px-16 pt-8 md:pt-16 lg:pt-20 pb-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
