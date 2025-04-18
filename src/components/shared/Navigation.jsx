@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,13 +63,24 @@ export default function Navigation() {
               )}
             </Link>
 
-            {/* User Icon / Account Menu - simplified without Clerk */}
+            {/* User Icon / Account Menu - simplified without Clerk
             <Link
               to="/account"
               className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-gray-100"
             >
               <User className="h-5 w-5" />
-            </Link>
+            </Link> */}
+
+            <div className="hidden md:flex items-center space-x-4">
+              <Button variant="ghost">
+                <Link to="/sign-in">Log In</Link>
+              </Button>
+              <Button>
+                <Link to="/sign-up">Sign Up</Link>
+              </Button>
+
+            </div>
+
 
             {/* Mobile Menu Button */}
             <button
