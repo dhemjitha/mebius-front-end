@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
@@ -10,20 +9,22 @@ import SignUpPage from "./pages/sign-up.page";
 import ProductPage from "./pages/product.page";
 import ScrollToTop from "./components/shared/ScrollToTop";
 
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route element={<RootLayout />}>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products/:id" element={<ProductPage />} />
-          </Route>
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+  <BrowserRouter>
+    <ScrollToTop />
+    <Routes>
+      <Route element={<RootLayout />}>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductPage />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
