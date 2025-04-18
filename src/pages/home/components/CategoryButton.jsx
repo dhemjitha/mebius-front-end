@@ -1,14 +1,14 @@
-function CategoryButton({ active, onClick, children }) {
+function CategoryButton({ category, isSelected, onClick }) {
   return (
     <button 
-      onClick={onClick}
+      onClick={() => onClick(category._id)}
       className={`border rounded-full px-4 py-2 transition-colors ${
-        active 
+        isSelected 
           ? 'bg-black text-white border-black' 
           : 'border-black text-black hover:bg-gray-100'
       }`}
     >
-      {children}
+      {category.name}
     </button>
   );
 }
