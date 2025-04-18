@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ShoppingBag } from "lucide-react";
 import { useParams } from "react-router";
+import { useCart } from "@/lib/CartContext";
+import { toast } from "sonner";
 
 function ProductPage() {
   const [selectedSize, setSelectedSize] = useState(null);
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const product = {
     _id: "3",
@@ -20,29 +23,19 @@ function ProductPage() {
     sizes: ["US 7", "US 8", "US 9", "US 10", "US 11"]
   };
 
-  const handleAddToCart = () => {
+  const handleClick = () => {
     if (!selectedSize) {
-      alert("Please select a size");
+      toast.error("Please select a size before adding to cart");
       return;
     }
-    // Add to cart logic here
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingItemIndex = cartItems.findIndex(
-      (item) => item._id === product._id && item.size === selectedSize
-    );
-
-    if (existingItemIndex > -1) {
-      cartItems[existingItemIndex].quantity += 1;
-    } else {
-      cartItems.push({
-        ...product,
-        size: selectedSize,
-        quantity: 1
-      });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-    alert("Added to cart!");
+    
+    const productWithSize = {
+      ...product,
+      selectedSize,
+    };
+    
+    addToCart(productWithSize);
+    toast.success("Added to cart successfully!");
   };
 
   return (
@@ -92,6 +85,9 @@ function ProductPage() {
                   </Button>
                 ))}
               </div>
+              {!selectedSize && (
+                <p className="text-sm text-red-500 mt-2">Please select a size</p>
+              )}
             </div>
           </div>
 
@@ -99,7 +95,7 @@ function ProductPage() {
             <Button
               size="lg"
               className="w-full"
-              onClick={handleAddToCart}
+              onClick={handleClick}
             >
               <ShoppingBag className="mr-2" />
               Add to Cart
