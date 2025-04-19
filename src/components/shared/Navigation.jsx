@@ -2,15 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
 import { Button } from "../ui/button";
-
+import { useCart } from "@/lib/CartContext"; 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Calculate total quantity of items in cart
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartItemCount = cartItems.reduce((total, item) => {
-    return total + (item.quantity || 1);
-  }, 0);
+  const { cart } = useCart();
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   // Function to close mobile menu
   const closeMobileMenu = () => setIsMenuOpen(false);
