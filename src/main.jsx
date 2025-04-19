@@ -11,10 +11,9 @@ import ScrollToTop from "./components/shared/ScrollToTop";
 import CartPage from "./pages/cart.page";
 import { CartProvider } from "./lib/CartContext";
 import ShopPage from "./pages/shop/shop.page";
-
-if (history.scrollRestoration) {
-  history.scrollRestoration = 'manual';
-}
+import AccountPage from "./pages/account.page";
+import ProtectedLayout from "./layouts/protected-layout.layout";
+import BecomeASellerPage from "./pages/become-a-seller.page";
 
 createRoot(document.getElementById("root")).render(
   <CartProvider>
@@ -29,6 +28,10 @@ createRoot(document.getElementById("root")).render(
             <Route path="/shop">
               <Route index element={<ShopPage />} />
               <Route path=":category" element={<ShopPage />} />
+            </Route>
+            <Route element={<ProtectedLayout />}>
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/become-a-seller" element={<BecomeASellerPage />} />
             </Route>
           </Route>
           <Route path="/sign-in" element={<SignInPage />} />

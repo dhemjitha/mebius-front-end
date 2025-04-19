@@ -1,21 +1,8 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/lib/CartContext";
 import { Link } from "react-router";
 
 function ProductCard(props) {
   const { imageUrl, name, price, _id, description } = props;
-  const { addToCart } = useCart();
-
-  const handleClick = () => {
-    addToCart({
-      _id,
-      name,
-      price,
-      imageUrl,
-      description,
-    });
-  };
 
   return (
     <Link to={`/products/${_id}`}>
@@ -33,10 +20,9 @@ function ProductCard(props) {
           <span className="text-lg block">${price?.toFixed(2)}</span>
         </div>
         <Button 
-          onClick={handleClick} 
           className="w-full transition-all duration-300"
         >
-          Add to Cart
+          View Product
         </Button>
       </div>
     </div>
