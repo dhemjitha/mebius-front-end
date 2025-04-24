@@ -84,7 +84,7 @@ const formatPrice = (price) => {
 }
 
 const formatStatus = (status) => {
-  return status.split('_').map(word => 
+  return status.split('_').map(word =>
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(' ')
 }
@@ -108,19 +108,19 @@ export default function ProductTable() {
   }
 
   const filteredProducts = mockProducts
-    .filter(product => 
+    .filter(product =>
       selectedCategory === "all" || product.category === selectedCategory
     )
     .filter(product => getPriceRangeFilter(product.price))
-    .filter(product => 
+    .filter(product =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1">
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-4 items-center justify-between">
           <div className="relative w-full sm:w-72">
             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -130,11 +130,14 @@ export default function ProductTable() {
               className="pl-8"
             />
           </div>
-          <Select 
-            value={selectedCategory} 
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Select
+            value={selectedCategory}
             onValueChange={setSelectedCategory}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
@@ -146,9 +149,10 @@ export default function ProductTable() {
               ))}
             </SelectContent>
           </Select>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="w-[180px]">
+              <Button variant="outline" className="w-full sm:w-[180px]">
                 <SlidersHorizontal className="mr-2 h-4 w-4" />
                 Price Range
               </Button>
@@ -208,9 +212,22 @@ export default function ProductTable() {
                     )}
                   </TableCell>
                   <TableCell>
-                    <Badge variant={getStatusBadgeVariant(product.status)}>
-                      {formatStatus(product.status)}
-                    </Badge>
+                    <div className="flex items-center">
+                      <Badge
+                        variant={getStatusBadgeVariant(product.status)}
+                        className="text-xs px-1.5 py-0.5 sm:hidden"
+                      >
+                        {product.status === 'in_stock' ? 'In' :
+                          product.status === 'low_stock' ? 'Low' :
+                            product.status === 'out_of_stock' ? 'Out' : formatStatus(product.status)}
+                      </Badge>
+                      <Badge
+                        variant={getStatusBadgeVariant(product.status)}
+                        className="hidden sm:flex"
+                      >
+                        {formatStatus(product.status)}
+                      </Badge>
+                    </div>
                   </TableCell>
                   <TableCell>
                     <TooltipProvider>
