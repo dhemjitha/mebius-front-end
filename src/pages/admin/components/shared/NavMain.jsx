@@ -1,4 +1,4 @@
-import { LayoutDashboardIcon, Settings2, Users, PackageSearch, Package2 } from "lucide-react"
+import { LayoutDashboardIcon, Settings2, Users, PackageSearch, Package2, TrendingUp } from "lucide-react"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -29,6 +29,11 @@ const navItems = [
     title: "Orders",
     url: "/admin/orders",
     icon: PackageSearch,
+  },
+  {
+    title: "Trending",
+    url: "/admin/trending-products",
+    icon: TrendingUp,
   },
   {
     title: "Variant Config",
