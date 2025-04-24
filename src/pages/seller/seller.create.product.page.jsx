@@ -1,4 +1,4 @@
-import { CreateProductForm } from "./component/create-product-from";
+import { CreateProductForm } from "./component/CreateProductForm";
 
 export default function SellerCreateProductPage() {
   return (

@@ -204,9 +204,9 @@ export default function ProductTable() {
                   </TableCell>
                   <TableCell className="text-right">
                     {product.stock === 0 ? (
-                      <span className="text-destructive">Out of stock</span>
+                      <span className="text-destructive text-xs">Out of stock</span>
                     ) : (
-                      <span className={product.stock < 100 ? "text-yellow-600" : ""}>
+                      <span className={product.stock < 100 ? "text-yellow-600 text-xs" : "text-xs"}>
                         {product.stock} units
                       </span>
                     )}
