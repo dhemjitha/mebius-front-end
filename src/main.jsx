@@ -21,6 +21,7 @@ import AdminProductsPage from "./pages/admin/admin.products.page";
 import SellerProtectedLayout from "./layouts/seller-protected-layout.layout";
 import SellerDashboardPage from "./pages/seller/seller.dashboard.page";
 import SellerCreateProductPage from "./pages/seller/seller.create.product.page";
+import SellerProductsPage from "./pages/seller/seller.products.page";
 createRoot(document.getElementById("root")).render(
   <CartProvider>
     <BrowserRouter>
@@ -48,6 +49,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/seller" element={<SellerProtectedLayout />}>
             <Route index element={<SellerDashboardPage />} />
             <Route path="create-product" element={<SellerCreateProductPage />} />
+            <Route path="products" element={<SellerProductsPage />} />
           </Route>
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
