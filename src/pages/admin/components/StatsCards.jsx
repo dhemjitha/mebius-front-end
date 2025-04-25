@@ -1,6 +1,7 @@
+import { NumberTicker } from "@/components/magicui/number-ticker"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Package, DollarSign, ShoppingCart } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const mockStats = {
   totalSales: 1234,
@@ -26,7 +27,7 @@ export default function StatsCards() {
           <ShoppingCart className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.totalSales}</div>
+          <NumberTicker className="text-2xl font-bold" value={stats.totalSales} />
           <p className="text-xs text-muted-foreground">{stats.growth.sales} from last month</p>
         </CardContent>
       </Card>
@@ -37,7 +38,7 @@ export default function StatsCards() {
           <Users className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.activeUsers}</div>
+          <NumberTicker className="text-2xl font-bold" value={stats.activeUsers} />
           <p className="text-xs text-muted-foreground">{stats.growth.users} new users</p>
         </CardContent>
       </Card>
@@ -48,7 +49,7 @@ export default function StatsCards() {
           <Package className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{stats.totalProducts}</div>
+          <NumberTicker className="text-2xl font-bold" value={stats.totalProducts} />
           <p className="text-xs text-muted-foreground">{stats.growth.products} new products</p>
         </CardContent>
       </Card>
@@ -59,7 +60,7 @@ export default function StatsCards() {
           <DollarSign className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">${stats.revenue.toLocaleString()}</div>
+          <NumberTicker className="text-2xl font-bold" value={stats.revenue} />
           <p className="text-xs text-muted-foreground">{stats.growth.revenue} from last month</p>
         </CardContent>
       </Card>
