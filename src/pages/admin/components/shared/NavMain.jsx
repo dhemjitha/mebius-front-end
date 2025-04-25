@@ -37,7 +37,7 @@ const navItems = [
   },
   {
     title: "Variant Config",
-    url: "/admin/config",
+    url: "/admin/variant-config",
     icon: Settings2,
   },
 ];

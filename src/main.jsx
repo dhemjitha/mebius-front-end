@@ -25,6 +25,7 @@ import SellerProductsPage from "./pages/seller/seller.products.page";
 import SellerOrderPage from "./pages/seller/seller.order.page";
 import AdminOrderPage from "./pages/admin/admin.order.page";
 import AdminTrendingProductPage from "./pages/admin/admin.trending.product.page";
+import AdminVariantConfigPage from "./pages/admin/admin.variant.config.page";
 
 
 
@@ -53,6 +54,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="products" element={<AdminProductsPage />} />
             <Route path="orders" element={<AdminOrderPage />} />
             <Route path="trending-products" element={<AdminTrendingProductPage />} />
+            <Route path="variant-config" element={<AdminVariantConfigPage />} />
           </Route>
           <Route path="/seller" element={<SellerProtectedLayout />}>
             <Route index element={<SellerDashboardPage />} />
