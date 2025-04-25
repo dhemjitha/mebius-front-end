@@ -7,45 +7,41 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Plus, Pencil, Trash2 } from "lucide-react"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useState } from "react"
+import { Pencil, Trash2 } from "lucide-react"
+import CategoryDialog from "./dialogs/CategoryDialog"
 
 const mockCategories = [
-  { id: 1, name: "T-Shirts", slug: "t-shirts" },
-  { id: 2, name: "Hoodies", slug: "hoodies" },
-  { id: 3, name: "Pants", slug: "pants" },
-  { id: 4, name: "Shoes", slug: "shoes" },
+  {
+    id: "1",
+    name: "Shoes",
+    slug: "shoes"
+  },
+  {
+    id: "2",
+    name: "Shorts",
+    slug: "shorts"
+  },
+  {
+    id: "3",
+    name: "T-Shirts",
+    slug: "tshirts"
+  },
+  {
+    id: "4",
+    name: "Pants",
+    slug: "pants"
+  },
+  {
+    id: "5",
+    name: "Socks",
+    slug: "socks"
+  },
 ]
 
 const CategoryTable = () => {
-  const [open, setOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    name: "",
-    slug: ""
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-    setOpen(false)
-    setFormData({ name: "", slug: "" })
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+  const handleSave = (data) => {
+    // Handle saving the new category
+    console.log(data)
   }
 
   return (
@@ -57,51 +53,9 @@ const CategoryTable = () => {
             Manage your product categories here
           </p>
         </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="h-4 w-4 mr-2" />
-              Add Category
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Add New Category</DialogTitle>
-            </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Enter category name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="slug">Slug</Label>
-                <Input
-                  id="slug"
-                  name="slug"
-                  placeholder="enter-slug-here"
-                  value={formData.slug}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-              </div>
-              <div className="flex justify-end space-x-2 pt-4">
-                <Button variant="outline" type="button" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button type="submit">Save</Button>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
+        <CategoryDialog onSave={handleSave} />
       </div>
-      
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>

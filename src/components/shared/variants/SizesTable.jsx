@@ -7,17 +7,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Plus, Pencil, Trash2 } from "lucide-react"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useState } from "react"
+import { Pencil, Trash2 } from "lucide-react"
+import SizeDialog from "./dialogs/SizeDialog"
 
 const mockSizes = [
   { id: 1, name: "Small" },
@@ -27,24 +18,9 @@ const mockSizes = [
 ]
 
 const SizesTable = () => {
-  const [open, setOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    name: ""
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-    setOpen(false)
-    setFormData({ name: "" })
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+  const handleSave = (data) => {
+    // Handle saving the new size
+    console.log(data)
   }
 
   return (
@@ -56,38 +32,7 @@ const SizesTable = () => {
             Manage your product sizes here
           </p>
         </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="h-4 w-4 mr-2" />
-              Add Size
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Add New Size</DialogTitle>
-            </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Enter size name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-              </div>
-              <div className="flex justify-end space-x-2 pt-4">
-                <Button variant="outline" type="button" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button>
-                <Button type="submit">Save</Button>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
+        <SizeDialog onSave={handleSave} />
       </div>
       
       <div className="rounded-md border">
