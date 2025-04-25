@@ -24,6 +24,10 @@ import SellerCreateProductPage from "./pages/seller/seller.create.product.page";
 import SellerProductsPage from "./pages/seller/seller.products.page";
 import SellerOrderPage from "./pages/seller/seller.order.page";
 import AdminOrderPage from "./pages/admin/admin.order.page";
+import AdminTrendingProductPage from "./pages/admin/admin.trending.product.page";
+
+
+
 createRoot(document.getElementById("root")).render(
   <CartProvider>
     <BrowserRouter>
@@ -48,6 +52,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="users" element={<AdminUsersPage />} />
             <Route path="products" element={<AdminProductsPage />} />
             <Route path="orders" element={<AdminOrderPage />} />
+            <Route path="trending-products" element={<AdminTrendingProductPage />} />
           </Route>
           <Route path="/seller" element={<SellerProtectedLayout />}>
             <Route index element={<SellerDashboardPage />} />
