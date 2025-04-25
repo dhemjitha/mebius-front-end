@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router";
-import { categories, colors } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-function ShopFilters() {
+function ShopFilters({ categories, colors }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { category } = useParams();
@@ -12,7 +10,6 @@ function ShopFilters() {
   const selectedColor = queryParams.get("color");
 
   const handleCategoryClick = (categorySlug) => {
-    // If we're already on this category, go back to all products
     if (category === categorySlug) {
       navigate("/shop");
     } else {
@@ -23,7 +20,6 @@ function ShopFilters() {
   const handleColorClick = (colorSlug) => {
     const params = new URLSearchParams(location.search);
 
-    // If we're already filtering by this color, remove the filter
     if (selectedColor === colorSlug) {
       params.delete("color");
     } else {

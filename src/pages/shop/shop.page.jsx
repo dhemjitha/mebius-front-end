@@ -4,8 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import ShopFilters from "./components/ShopFilters";
 import { useMemo, useState, useEffect } from "react";
 
-// Mock data - will be replaced with API calls later
-const mockProducts = [
+const allProducts = [
   {
     _id: "1",
     name: "Casual Shoe",
@@ -170,7 +169,7 @@ const mockProducts = [
   },
 ];
 
-const mockCategories = [
+const categories = [
   {
     _id: "1",
     name: "Shoes",
@@ -198,13 +197,21 @@ const mockCategories = [
   },
 ];
 
+const colors = [
+  { _id: "1", slug: "resin", name: "Resin", hex: "#6C7C59", hexcode: "#6C7C59" },
+  { _id: "2", slug: "pimento", name: "Pimento", hex: "#BF3B2F", hexcode: "#BF3B2F" },
+  { _id: "3", slug: "bright_ceramic", name: "Bright Ceramic", hex: "#FFA500", hexcode: "#FFA500" },
+  { _id: "4", slug: "black", name: "Black", hex: "#000000", hexcode: "#000000" },
+  { _id: "5", slug: "white", name: "White", hex: "#FFFFFF", hexcode: "#FFFFFF" }
+];
+
 function ShopPage() {
   const { category } = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const color = queryParams.get("color");
   
-  const [products, setProducts] = useState(mockProducts);
+  const [products, setProducts] = useState(allProducts);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -213,7 +220,7 @@ function ShopPage() {
       setIsLoading(true);
       try {
         await new Promise(resolve => setTimeout(resolve, 500));
-        setProducts(mockProducts);
+        setProducts(allProducts);
         setError(null);
       } catch (err) {
         setError('Failed to fetch products');
@@ -230,7 +237,7 @@ function ShopPage() {
     let result = [...products];
 
     if (category) {
-      const selectedCategory = mockCategories.find(c => c.slug === category);
+      const selectedCategory = categories.find(c => c.slug === category);
       if (selectedCategory) {
         result = result.filter(product => product.categoryId === selectedCategory._id);
       }
@@ -264,7 +271,7 @@ function ShopPage() {
     <div className="px-4 sm:px-6 lg:px-16 py-8 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1">
-          <ShopFilters categories={mockCategories} />
+          <ShopFilters categories={categories} colors={colors} />
         </div>
 
         <div className="col-span-1 md:col-span-3">
