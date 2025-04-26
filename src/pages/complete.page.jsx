@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 import { CheckCircle2 } from "lucide-react";
+import { ConfettiFireworks } from "@/components/magicui/ConfettiFireworks";
 
 function CompletePage() {
   // Mock data for the completed order
@@ -127,6 +128,7 @@ function CompletePage() {
           </Button>
         </div>
       </div>
+      <ConfettiFireworks />
     </div>
   );
 }
