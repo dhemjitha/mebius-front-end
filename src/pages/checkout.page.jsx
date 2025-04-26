@@ -29,9 +29,7 @@ function CheckoutPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Cart Items and Shipping Form */}
                 <div className="lg:col-span-2 space-y-8">
-                    {/* Cart Items */}
                     <div className="space-y-4">
                         <h2 className="text-xl font-semibold">Order Items</h2>
                         {cart.map((item, index) => (
@@ -39,14 +37,12 @@ function CheckoutPage() {
                         ))}
                     </div>
 
-                    {/* Shipping Address Form */}
                     <div className="bg-gray-50 rounded-lg">
                         <h2 className="text-xl font-semibold mb-6">Shipping Address</h2>
                         <ShippingAddressForm />
                     </div>
                 </div>
 
-                {/* Order Summary */}
                 <div className="">
                     <div className="bg-gray-50 rounded-lg p-6 space-y-4 sticky top-4">
                         <h2 className="text-xl font-semibold">Order Summary</h2>
