@@ -63,8 +63,9 @@ const ShippingAddressForm = ({ existingAddress }) => {
     // Simulate API call
     setTimeout(() => {
       toast.success("Shipping address saved");
+      toast.success("Order completed successfully");
       setIsLoading(false);
-      navigate("/shop/payment");
+      navigate("/shop/complete");
     }, 800);
   };
 
