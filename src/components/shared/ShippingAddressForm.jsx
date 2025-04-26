@@ -16,23 +16,31 @@ import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  line_1: z.string().min(1),
-  line_2: z.string().min(1),
-  city: z.string().min(1),
-  state: z.string().min(1),
-  zip_code: z.string().min(1),
-  phone: z.string().refine(
-    (value) => {
-      // This regex checks for a basic international phone number format
-      return /^\+?[1-9]\d{1,14}$/.test(value);
-    },
-    {
-      message: "Invalid phone number format",
-    }
-  ),
+  line_1: z.string().min(1, {
+    message: "Address line 1 is required",
+  }),
+  line_2: z.string().optional(),
+  city: z.string().min(1, {
+    message: "City is required",
+  }),
+  state: z.string().min(1, {
+    message: "State is required",
+  }).max(2, {
+    message: "Please use state abbreviation (e.g. NY)",
+  }),
+  zip_code: z.string().min(5, {
+    message: "ZIP code must be at least 5 characters",
+  }).max(10, {
+    message: "ZIP code cannot be longer than 10 characters",
+  }).regex(/^\d{5}(-\d{4})?$/, {
+    message: "Please enter a valid ZIP code (e.g. 12345 or 12345-6789)",
+  }),
+  phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, {
+    message: "Please enter a valid phone number",
+  }),
 });
 
-const ShippingAddressForm = ({ cart }) => {
+const ShippingAddressForm = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,33 +49,30 @@ const ShippingAddressForm = ({ cart }) => {
       city: "",
       state: "",
       zip_code: "",
-      phone: ""
-    }
+      phone: "",
+    },
   });
-  
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(values) {
+  function onSubmit(values) {
     setIsLoading(true);
     
-    // Mock order ID generation
-    const mockOrderId = `order-${Math.floor(Math.random() * 10000)}`;
+    // Here you would typically send the form data to your backend
+    console.log("Form submitted:", values);
     
-    // Simulate processing (completely frontend)
+    // Simulate API call
     setTimeout(() => {
-      toast.success("Checkout successful");
+      toast.success("Shipping address saved");
       setIsLoading(false);
-      navigate(`/shop/payment?orderId=${mockOrderId}`);
+      navigate("/shop/payment");
     }, 800);
   }
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="space-y-8 w-full"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="line_1"
@@ -81,12 +86,13 @@ const ShippingAddressForm = ({ cart }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="line_2"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Address Line 2</FormLabel>
+              <FormLabel>Address Line 2 (Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Apt 456" {...field} />
               </FormControl>
@@ -94,7 +100,8 @@ const ShippingAddressForm = ({ cart }) => {
             </FormItem>
           )}
         />
-        <div className="grid grid-cols-2 gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="city"
@@ -108,6 +115,7 @@ const ShippingAddressForm = ({ cart }) => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="state"
@@ -115,20 +123,21 @@ const ShippingAddressForm = ({ cart }) => {
               <FormItem>
                 <FormLabel>State</FormLabel>
                 <FormControl>
-                  <Input placeholder="NY" {...field} />
+                  <Input placeholder="NY" maxLength={2} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="zip_code"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Zip Code</FormLabel>
+                <FormLabel>ZIP Code</FormLabel>
                 <FormControl>
                   <Input placeholder="10001" {...field} />
                 </FormControl>
@@ -136,6 +145,7 @@ const ShippingAddressForm = ({ cart }) => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="phone"
@@ -150,9 +160,10 @@ const ShippingAddressForm = ({ cart }) => {
             )}
           />
         </div>
+
         <div className="flex justify-end">
           <Button type="submit" disabled={isLoading}>
-            {isLoading ? "Processing..." : "Continue to Payment"}
+            {isLoading ? "Saving..." : "Continue to Payment"}
           </Button>
         </div>
       </form>

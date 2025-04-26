@@ -54,7 +54,7 @@ function CartPage() {
               </div>
 
               <Button asChild className="w-full mt-4">
-                <Link to="/checkout">
+                <Link to="/shop/checkout">
                   Proceed to Checkout
                 </Link>
               </Button>

@@ -27,6 +27,7 @@ import AdminOrderPage from "./pages/admin/admin.order.page";
 import AdminTrendingProductPage from "./pages/admin/admin.trending.product.page";
 import AdminVariantConfigPage from "./pages/admin/admin.variant.config.page";
 import SellerVariantConfigPage from "./pages/seller/seller.variant.config.page";
+import CheckoutPage from "./pages/checkout.page";
 
 
 
@@ -49,6 +50,7 @@ createRoot(document.getElementById("root")).render(
             <Route element={<ProtectedLayout />}>
               <Route path="/account" element={<AccountPage />} />
               <Route path="/become-a-seller" element={<BecomeASellerPage />} />
+              <Route path="/shop/checkout" element={<CheckoutPage />} />
             </Route>
           </Route>
 
