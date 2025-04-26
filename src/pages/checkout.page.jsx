@@ -4,9 +4,13 @@ import CheckOutItem from "@/components/shared/CheckOutItem";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ArrowLeft } from "lucide-react";
 import ShippingAddressForm from "@/components/shared/ShippingAddressForm";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function CheckoutPage() {
     const { cart } = useCart();
+    const [userAddress, setUserAddress] = useState(null);
+    const [isLoadingAddress, setIsLoadingAddress] = useState(true);
 
     const subtotal = cart.reduce((total, item) => {
         return total + (item.product.discountPrice || item.product.price) * item.quantity;
@@ -14,6 +18,36 @@ function CheckoutPage() {
 
     const shipping = subtotal > 0 ? 10 : 0;
     const total = subtotal + shipping;
+
+    useEffect(() => {
+        // Here you would fetch the user's address from your backend
+        // For now, we'll simulate an API call with a timeout
+        const fetchUserAddress = async () => {
+            try {
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // Mock response - replace this with actual API call
+                const response = {
+                    line_1: "123 Main Street",
+                    line_2: "Apt 4B",
+                    city: "New York",
+                    state: "NY",
+                    zip_code: "10001",
+                    phone: "+12125550123"
+                };
+                
+                setUserAddress(response);
+            } catch (error) {
+                console.error("Error fetching user address:", error);
+                setUserAddress(null);
+            } finally {
+                setIsLoadingAddress(false);
+            }
+        };
+
+        fetchUserAddress();
+    }, []);
 
     if (cart.length === 0) {
         return <Navigate to="/shop" />
@@ -37,9 +71,17 @@ function CheckoutPage() {
                         ))}
                     </div>
 
-                    <div className="bg-gray-50 rounded-lg">
+                    <div className="bg-gray-50 rounded-lg p-6">
                         <h2 className="text-xl font-semibold mb-6">Shipping Address</h2>
-                        <ShippingAddressForm />
+                        {isLoadingAddress ? (
+                            <div className="space-y-4">
+                                <Skeleton className="h-10 w-full" />
+                                <Skeleton className="h-10 w-full" />
+                                <Skeleton className="h-10 w-full" />
+                            </div>
+                        ) : (
+                            <ShippingAddressForm existingAddress={userAddress} />
+                        )}
                     </div>
                 </div>
 

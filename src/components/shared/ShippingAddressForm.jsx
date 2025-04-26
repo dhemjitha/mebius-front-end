@@ -40,10 +40,10 @@ const formSchema = z.object({
   }),
 });
 
-const ShippingAddressForm = () => {
+const ShippingAddressForm = ({ existingAddress }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: existingAddress || {
       line_1: "",
       line_2: "",
       city: "",
@@ -56,23 +56,21 @@ const ShippingAddressForm = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  function onSubmit(values) {
+  const handleSubmit = async (values) => {
     setIsLoading(true);
-    
     // Here you would typically send the form data to your backend
     console.log("Form submitted:", values);
-    
     // Simulate API call
     setTimeout(() => {
       toast.success("Shipping address saved");
       setIsLoading(false);
       navigate("/shop/payment");
     }, 800);
-  }
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="line_1"
