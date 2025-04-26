@@ -29,17 +29,14 @@ import AdminVariantConfigPage from "./pages/admin/admin.variant.config.page";
 import SellerVariantConfigPage from "./pages/seller/seller.variant.config.page";
 import CheckoutPage from "./pages/checkout.page";
 import CompletePage from "./pages/complete.page";
-
-
+import NotFoundPage from "./pages/errors/not-found.page";
 
 createRoot(document.getElementById("root")).render(
   <CartProvider>
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-
         <Route element={<RootLayout />}>
-
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/products/:id" element={<ProductPage />} />
@@ -75,8 +72,9 @@ createRoot(document.getElementById("root")).render(
 
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   </CartProvider>
