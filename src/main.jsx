@@ -26,6 +26,7 @@ import SellerOrderPage from "./pages/seller/seller.order.page";
 import AdminOrderPage from "./pages/admin/admin.order.page";
 import AdminTrendingProductPage from "./pages/admin/admin.trending.product.page";
 import AdminVariantConfigPage from "./pages/admin/admin.variant.config.page";
+import SellerVariantConfigPage from "./pages/seller/seller.variant.config.page";
 
 
 
@@ -34,7 +35,9 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
+
         <Route element={<RootLayout />}>
+
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/products/:id" element={<ProductPage />} />
@@ -48,6 +51,7 @@ createRoot(document.getElementById("root")).render(
               <Route path="/become-a-seller" element={<BecomeASellerPage />} />
             </Route>
           </Route>
+
           <Route path="/admin" element={<AdminProtectedLayout />}>
             <Route index element={<AdminDashboardPage />} />
             <Route path="users" element={<AdminUsersPage />} />
@@ -56,15 +60,19 @@ createRoot(document.getElementById("root")).render(
             <Route path="trending-products" element={<AdminTrendingProductPage />} />
             <Route path="variant-config" element={<AdminVariantConfigPage />} />
           </Route>
+
           <Route path="/seller" element={<SellerProtectedLayout />}>
             <Route index element={<SellerDashboardPage />} />
             <Route path="create-product" element={<SellerCreateProductPage />} />
             <Route path="products" element={<SellerProductsPage />} />
             <Route path="orders" element={<SellerOrderPage />} />
+            <Route path="variant-config" element={<SellerVariantConfigPage />} />
           </Route>
+
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
         </Route>
+
       </Routes>
     </BrowserRouter>
   </CartProvider>

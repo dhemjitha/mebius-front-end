@@ -32,7 +32,7 @@ const navItems = [
   },
   {
     title: "Variant Config",
-    url: "/seller/config",
+    url: "/seller/variant-config",
     icon: Settings2,
   },
 ];
