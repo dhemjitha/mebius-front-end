@@ -12,15 +12,7 @@ function ProfileCard() {
     l_name: "Doe",
     email: "john.doe@example.com",
     password: "",
-    roleId: "user123",
-    address: {
-      line_1: "123 Main St",
-      line_2: "Apt 4B",
-      city: "New York",
-      state: "NY",
-      zip_code: "10001",
-      phone: "+1 (555) 123-4567"
-    }
+    role: "Customer"
   };
 
   const [open, setOpen] = useState(false);
@@ -33,21 +25,10 @@ function ProfileCard() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith("address.")) {
-      const addressField = name.split(".")[1];
-      setUserProfile(prev => ({
-        ...prev,
-        address: {
-          ...prev.address,
-          [addressField]: value
-        }
-      }));
-    } else {
-      setUserProfile(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
+    setUserProfile(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
@@ -99,72 +80,17 @@ function ProfileCard() {
                   type="email"
                   value={userProfile.email}
                   onChange={handleChange}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={userProfile.password}
-                  onChange={handleChange}
-                  placeholder="Enter new password"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="roleId">Role ID</Label>
-                <Input
-                  id="roleId"
-                  name="roleId"
-                  value={userProfile.roleId}
                   disabled
                 />
               </div>
               <div className="space-y-2">
-                <Label>Address (Optional)</Label>
-                <div className="space-y-4">
-                  <Input
-                    name="address.line_1"
-                    value={userProfile.address.line_1}
-                    onChange={handleChange}
-                    placeholder="Address Line 1"
-                  />
-                  <Input
-                    name="address.line_2"
-                    value={userProfile.address.line_2}
-                    onChange={handleChange}
-                    placeholder="Address Line 2"
-                  />
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      name="address.city"
-                      value={userProfile.address.city}
-                      onChange={handleChange}
-                      placeholder="City"
-                    />
-                    <Input
-                      name="address.state"
-                      value={userProfile.address.state}
-                      onChange={handleChange}
-                      placeholder="State"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      name="address.zip_code"
-                      value={userProfile.address.zip_code}
-                      onChange={handleChange}
-                      placeholder="ZIP Code"
-                    />
-                    <Input
-                      name="address.phone"
-                      value={userProfile.address.phone}
-                      onChange={handleChange}
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                </div>
+                <Label htmlFor="role">Role</Label>
+                <Input
+                  id="role"
+                  name="role"
+                  value={userProfile.role}
+                  disabled
+                />
               </div>
               <div className="flex justify-end space-x-2 pt-4">
                 <Button variant="outline" type="button" onClick={() => setOpen(false)}>
@@ -187,27 +113,8 @@ function ProfileCard() {
             <dd className="font-medium">{userProfile.email}</dd>
           </div>
           <div className="space-y-1">
-            <dt className="text-sm text-muted-foreground">Role ID</dt>
-            <dd className="font-medium">{userProfile.roleId}</dd>
-          </div>
-          <div className="space-y-1">
-            <dt className="text-sm text-muted-foreground">Phone</dt>
-            <dd className="font-medium">{userProfile.address.phone || "Not provided"}</dd>
-          </div>
-          <div className="col-span-2 space-y-1">
-            <dt className="text-sm text-muted-foreground">Address</dt>
-            <dd className="font-medium">
-              {userProfile.address.line_1 ? (
-                <>
-                  {userProfile.address.line_1}
-                  {userProfile.address.line_2 && <>, {userProfile.address.line_2}</>}
-                  <br />
-                  {userProfile.address.city}, {userProfile.address.state} {userProfile.address.zip_code}
-                </>
-              ) : (
-                "Not provided"
-              )}
-            </dd>
+            <dt className="text-sm text-muted-foreground">Role</dt>
+            <dd className="font-medium ">{userProfile.role}</dd>
           </div>
         </dl>
       </CardContent>
