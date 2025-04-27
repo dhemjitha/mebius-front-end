@@ -11,7 +11,7 @@ import ScrollToTop from "./components/shared/ScrollToTop";
 import CartPage from "./pages/cart.page";
 import { CartProvider } from "./lib/CartContext";
 import ShopPage from "./pages/shop/shop.page";
-import AccountPage from "./pages/account.page";
+import AccountPage from "./pages/user/account.page";
 import ProtectedLayout from "./layouts/protected-layout.layout";
 import BecomeASellerPage from "./pages/become-a-seller.page";
 import AdminProtectedLayout from "./layouts/admin-protected-layout.layout";
