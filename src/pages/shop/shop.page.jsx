@@ -12,6 +12,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/2507976b1988e6d9a08599fcba5247bd.png",
     categoryId: "1", // SHOES
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -21,6 +22,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/5c482fd10ff96fad137ae5ca5aa7a561.png",
     categoryId: "1", // SHOES
+    colorId: "2", // PIMENTO
     featured: true
   },
   {
@@ -30,6 +32,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/02536ab1a554d315fc11f4ef6f9c1302.png",
     categoryId: "1", // SHOES
+    colorId: "5", // WHITE
     featured: true
   },
   {
@@ -39,6 +42,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/10fd34a19ed897401decf4c2dd4806d5.png",
     categoryId: "1", // SHOES
+    colorId: "1", // RESIN
     featured: true
   },
   {
@@ -48,6 +52,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/df950869c406241f2f48f416d0807241.png",
     categoryId: "1", // SHOES
+    colorId: "3", // BRIGHT CERAMIC
     featured: true
   },
   {
@@ -57,6 +62,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://fed-2-frontend-pre.vercel.app/assets/images/476b2a224ae85cd40fd6b1c7d34bc9ae.png",
     categoryId: "1", // SHOES
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -66,6 +72,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f93fec70-da18-44f9-a18d-27a5edd24037/M+NK+DF+FORM+7IN+UL+SHORT.png",
     categoryId: "2", // SHORTS
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -75,6 +82,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4d2bc9f3-6a55-4cd0-81f1-f1bd9bdb9723/M+NK+CLUB+FLOW+SHORT.png",
     categoryId: "2", // SHORTS
+    colorId: "5", // WHITE
     featured: true
   },
   {
@@ -84,6 +92,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0588a1a7-f96c-4983-b10e-50e0dc505e45/M+NK+DF+WVN+ICON+6IN+SHORT+STF.png",
     categoryId: "2", // SHORTS
+    colorId: "2", // PIMENTO
     featured: true
   },
   {
@@ -93,6 +102,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/674515e1-3d58-4635-a701-7d7e6c37b4c0/M+NK+DF+PRIMARY+STMT+SS.png",
     categoryId: "3", // T-SHIRTS
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -102,6 +112,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/553a3029-81d3-48c5-a176-6a98c9392e41/M+NSW+TEE+M90+OC+HBR+PK4.png",
     categoryId: "3", // T-SHIRTS
+    colorId: "5", // WHITE
     featured: true
   },
   {
@@ -111,6 +122,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0e41a9d9-029d-4ec5-af19-182ee2b5721e/M+NSW+TEE+ICON+SWOOSH.png",
     categoryId: "3", // T-SHIRTS
+    colorId: "1", // RESIN
     featured: true
   },
   {
@@ -120,6 +132,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_prod/w_1920,c_limit,f_auto,q_auto/ebaf91e3-8e79-4dac-8947-169111f38fff/image.jpg",
     categoryId: "4", // PANTS
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -129,6 +142,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_prod/w_1920,c_limit,f_auto,q_auto/c25018a6-af5e-4f02-afff-aef9c5f1ae2c/pdp.jpg",
     categoryId: "4", // PANTS
+    colorId: "3", // BRIGHT CERAMIC
     featured: true
   },
   {
@@ -138,6 +152,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8e169e49-e6dc-4f84-9468-4d8b0864b997/M+NK+DF+PHENOM+ELITE+KNIT+PANT.png",
     categoryId: "4", // PANTS
+    colorId: "5", // WHITE
     featured: true
   },
   {
@@ -147,6 +162,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://i8.amplience.net/i/jpl/sz_506453_a?qlt=92&w=600&h=464&v=1&fmt=auto",
     categoryId: "5", // SOCKS
+    colorId: "4", // BLACK
     featured: true
   },
   {
@@ -156,6 +172,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78e7ff88-6ef9-49e1-bdaf-336d4f40e08a/U+NK+UNICORN+CSH+AKL+1PR+-+160.png",
     categoryId: "5", // SOCKS
+    colorId: "5", // WHITE
     featured: true
   },
   {
@@ -165,6 +182,7 @@ const allProducts = [
     discountPrice: 99.95,
     imageUrl: "https://cdn.media.amplience.net/i/pgatss/2000000002501-57-01_pc?$large$&fmt=auto",
     categoryId: "5", // SOCKS
+    colorId: "2", // PIMENTO
     featured: true
   },
 ];
@@ -244,6 +262,10 @@ function ShopPage() {
     }
 
     if (color) {
+      const selectedColor = colors.find(c => c.slug === color);
+      if (selectedColor) {
+        result = result.filter(product => product.colorId === selectedColor._id);
+      }
     }
 
     return result;
