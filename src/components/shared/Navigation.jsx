@@ -7,7 +7,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { cart } = useCart();
-  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartItemCount = cart.length > 0 ? cart.reduce((total, item) => total + (item?.quantity || 0), 0) : 0;
 
   const closeMobileMenu = () => setIsMenuOpen(false);
 

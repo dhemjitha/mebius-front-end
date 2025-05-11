@@ -8,9 +8,9 @@ import { ShoppingBag, ArrowLeft } from "lucide-react";
 function CartPage() {
   const { cart } = useCart();
 
-  const subtotal = cart.reduce((total, item) => {
+  const subtotal = cart.length > 0 ? cart.reduce((total, item) => {
     return total + (item.product.discountPrice || item.product.price) * item.quantity;
-  }, 0);
+  }, 0) : 0;
 
   const shipping = subtotal > 0 ? 10 : 0;
   const total = subtotal + shipping;
