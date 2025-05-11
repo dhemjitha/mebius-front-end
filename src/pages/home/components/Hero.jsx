@@ -20,7 +20,7 @@ function Hero() {
         </div>
         <div className="hero-image-container">
           <img
-            src="https://fee-storefront.vercel.app/assets/hero/hero.jpg"
+            src="/assets/images/hero.jpg"
             alt="Premium products showcase"
             className="hero-image"
           />
