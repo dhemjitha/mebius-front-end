@@ -49,15 +49,6 @@
     }
 }
 
-.discount-badge {
-    display: inline-block;
-    border-radius: 9999px;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    width: fit-content;
-    background-color: #febc26;
-}
-
 .hero-title {
     font-size: 2rem;
     font-weight: 600;
