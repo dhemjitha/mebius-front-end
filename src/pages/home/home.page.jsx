@@ -2,7 +2,7 @@ import HeroGrid from "./components/HeroGrid";
 import CasualInspirations from "./components/CasualInspirations";
 import TrendingSection from "./components/TrendingSection";
 import ColorExplorer from "./components/ColorExplorer";
-
+import Hero from "./components/Hero";
 function HomePage() {
 
   return (
@@ -11,6 +11,7 @@ function HomePage() {
       <CasualInspirations />
       <TrendingSection />
       <ColorExplorer />
+      <Hero />
     </main>
   );
 }
