@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import "./Hero.css";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 function Hero() {
   return (
@@ -14,7 +15,7 @@ function Hero() {
             suscipit est autem quia? Voluptatem?
           </p>
           <Button className="w-fit mt-2 sm:mt-4" asChild>
-            <a to="/shop">Shop Now</a>
+            <Link to="/shop">Shop Now</Link>
           </Button>
         </div>
         <div className="hero-image-container">
