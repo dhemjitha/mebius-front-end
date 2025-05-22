@@ -14,20 +14,23 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     setCart(prevCart => {
-      const foundItem = prevCart.find(item => 
+      // Ensure prevCart is an array
+      const currentCart = Array.isArray(prevCart) ? prevCart : [];
+      
+      const foundItem = currentCart.find(item => 
         item.product._id === product._id && 
         item.product.selectedSize === product.selectedSize
       );
       
       if (foundItem) {
-        return prevCart.map(item => 
+        return currentCart.map(item => 
           item.product._id === product._id && 
           item.product.selectedSize === product.selectedSize
             ? { ...item, quantity: item.quantity + 1 } 
             : item
         );
       } else {
-        return [...prevCart, { product, quantity: 1 }];
+        return [...currentCart, { product, quantity: 1 }];
       }
     });
   };
