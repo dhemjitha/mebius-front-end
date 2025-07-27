@@ -1,11 +1,10 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
+import { Auth0Provider } from "@auth0/auth0-react";
 import RootLayout from "./layouts/root-layout.layout";
 import MainLayout from "./layouts/main-layout.layout";
 import HomePage from "./pages/home/home.page";
-import SignInPage from "./pages/sign-in.page";
-import SignUpPage from "./pages/sign-up.page";
 import ProductPage from "./pages/product.page";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import CartPage from "./pages/cart.page";
@@ -30,11 +29,21 @@ import SellerVariantConfigPage from "./pages/seller/seller.variant.config.page";
 import CheckoutPage from "./pages/checkout.page";
 import CompletePage from "./pages/complete.page";
 import NotFoundPage from "./pages/errors/not-found.page";
+import SignInPage from "./pages/sign-in.page";
 
 createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <BrowserRouter>
-      <ScrollToTop />
+  <Auth0Provider
+    domain="dulrandev.us.auth0.com"
+    clientId="9b0kgZkgyZEOAIxwv2FTsmKWqguGz3Ek"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+    cacheLocation="localstorage"
+    useRefreshTokens={true}
+  >
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollToTop />
       <Routes>
         <Route element={<RootLayout />}>
           <Route element={<MainLayout />}>
@@ -70,12 +79,12 @@ createRoot(document.getElementById("root")).render(
             <Route path="variant-config" element={<SellerVariantConfigPage />} />
           </Route>
 
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="sign-in" element={<SignInPage />} />
           
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </CartProvider>
+    </CartProvider>
+  </Auth0Provider>
 );

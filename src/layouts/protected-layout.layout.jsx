@@ -1,8 +1,17 @@
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
+import { useAuth } from "../hooks/use-auth";
 
-// Simple Protected layout that doesn't actually verify authentication
-// In a real app, this would check authentication status
 const ProtectedLayout = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/sign-in" />;
+  }
+
   return <Outlet />;
 };
 
