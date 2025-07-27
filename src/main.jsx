@@ -31,10 +31,13 @@ import CompletePage from "./pages/complete.page";
 import NotFoundPage from "./pages/errors/not-found.page";
 import SignInPage from "./pages/sign-in.page";
 
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+
 createRoot(document.getElementById("root")).render(
   <Auth0Provider
-    domain="dulrandev.us.auth0.com"
-    clientId="9b0kgZkgyZEOAIxwv2FTsmKWqguGz3Ek"
+    domain={domain}
+    clientId={clientId}
     authorizationParams={{
       redirect_uri: window.location.origin
     }}
