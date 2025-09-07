@@ -47,47 +47,48 @@ createRoot(document.getElementById("root")).render(
     <CartProvider>
       <BrowserRouter>
         <ScrollToTop />
-      <Routes>
-        <Route element={<RootLayout />}>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products/:id" element={<ProductPage />} />
-            <Route path="/shop/cart" element={<CartPage />} />
-            <Route path="/shop">
-              <Route index element={<ShopPage />} />
-              <Route path=":category" element={<ShopPage />} />
+        <Routes>
+          <Route element={<RootLayout />}>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products/:id" element={<ProductPage />} />
+              <Route path="/shop/cart" element={<CartPage />} />
+              <Route path="/shop">
+                <Route index element={<ShopPage />} />
+                <Route path=":category" element={<ShopPage />} />
+              </Route>
+              <Route element={<ProtectedLayout />}>
+                <Route path="/account" element={<AccountPage />} />
+                <Route path="/become-a-seller" element={<BecomeASellerPage />} />
+                <Route path="/shop/checkout" element={<CheckoutPage />} />
+                <Route path="/shop/complete" element={<CompletePage />} />
+              </Route>
             </Route>
+
             <Route element={<ProtectedLayout />}>
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/become-a-seller" element={<BecomeASellerPage />} />
-              <Route path="/shop/checkout" element={<CheckoutPage />} />
-              <Route path="/shop/complete" element={<CompletePage />} />
+              <Route path="/admin" element={<AdminProtectedLayout />}>
+                <Route index element={<AdminDashboardPage />} />
+                <Route path="users" element={<AdminUsersPage />} />
+                <Route path="products" element={<AdminProductsPage />} />
+                <Route path="orders" element={<AdminOrderPage />} />
+                <Route path="trending-products" element={<AdminTrendingProductPage />} />
+                <Route path="variant-config" element={<AdminVariantConfigPage />} />
+              </Route>
+
+              <Route path="/seller" element={<SellerProtectedLayout />}>
+                <Route index element={<SellerDashboardPage />} />
+                <Route path="create-product" element={<SellerCreateProductPage />} />
+                <Route path="products" element={<SellerProductsPage />} />
+                <Route path="orders" element={<SellerOrderPage />} />
+                <Route path="variant-config" element={<SellerVariantConfigPage />} />
+              </Route>
             </Route>
-          </Route>
+            <Route path="sign-in" element={<SignInPage />} />
 
-          <Route path="/admin" element={<AdminProtectedLayout />}>
-            <Route index element={<AdminDashboardPage />} />
-            <Route path="users" element={<AdminUsersPage />} />
-            <Route path="products" element={<AdminProductsPage />} />
-            <Route path="orders" element={<AdminOrderPage />} />
-            <Route path="trending-products" element={<AdminTrendingProductPage />} />
-            <Route path="variant-config" element={<AdminVariantConfigPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-
-          <Route path="/seller" element={<SellerProtectedLayout />}>
-            <Route index element={<SellerDashboardPage />} />
-            <Route path="create-product" element={<SellerCreateProductPage />} />
-            <Route path="products" element={<SellerProductsPage />} />
-            <Route path="orders" element={<SellerOrderPage />} />
-            <Route path="variant-config" element={<SellerVariantConfigPage />} />
-          </Route>
-
-          <Route path="sign-in" element={<SignInPage />} />
-          
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </CartProvider>
   </Auth0Provider>
 );
